@@ -1,10 +1,16 @@
 package edu.miu.cs.cs425.fairfieldlibrarycliapp.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "publishers")
 public class Publisher {
@@ -20,39 +26,6 @@ public class Publisher {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="primary_addr_id", nullable = true)
     private PrimaryAddress primaryAddress;
-
-    public Publisher() {
-        this(null, null);
-    }
-
-    public Publisher(Integer publisherId, String name) {
-        this.publisherId = publisherId;
-        this.name = name;
-    }
-
-    public Integer getPublisherId() {
-        return publisherId;
-    }
-
-    public void setPublisherId(Integer publisherId) {
-        this.publisherId = publisherId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public PrimaryAddress getPrimaryAddress() {
-        return primaryAddress;
-    }
-
-    public void setPrimaryAddress(PrimaryAddress primaryAddress) {
-        this.primaryAddress = primaryAddress;
-    }
 
     @Override
     public String toString() {
